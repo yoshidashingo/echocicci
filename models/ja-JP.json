@@ -1,0 +1,165 @@
+{
+    "languageModel": {
+      "types": [
+        {
+          "name": "AttrOfLight",
+          "values": [
+            {
+              "id": null,
+              "name": {
+                "value": "OFF",
+                "synonyms": [
+                  "オフにして",
+                  "消して"
+                ]
+              }
+            },
+            {
+              "id": null,
+              "name": {
+                "value": "ON",
+                "synonyms": [
+                  "つけて",
+                  "オンにして"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PauseIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ResumeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "CheckStatus",
+          "samples": [
+            "今どう",
+            "どんな状態",
+            "元気",
+            "元気かい",
+            "元気かな",
+            "今元気",
+            "状態を教えて",
+            "状態を確認して"
+          ],
+          "slots": []
+        },
+        {
+          "name": "Dance",
+          "samples": [
+            "ダンスしよう",
+            "ダンスして",
+            "ダンスしてごらん"
+          ],
+          "slots": []
+        },
+        {
+          "name": "Lights",
+          "samples": [
+            "電気を {Status} にして",
+            "ライトを {Status} にして"
+          ],
+          "slots": [
+            {
+              "name": "Status",
+              "type": "AttrOfLight"
+            }
+          ]
+        },
+        {
+          "name": "Meal",
+          "samples": [
+            "ごはんをあげて",
+            "ごはんをあげる",
+            "ごはん食べて",
+            "ごはんを食べて",
+            "ご飯を食べてね",
+            "ご飯をお食べ",
+            "ご飯をお食べよ"
+          ],
+          "slots": []
+        },
+        {
+          "name": "ResetToEgg",
+          "samples": [
+            "リセットして"
+          ],
+          "slots": []
+        },
+        {
+          "name": "Study",
+          "samples": [
+            "勉強しよう",
+            "お勉強しよう",
+            "勉強しようか",
+            "お勉強しようか",
+            "勉強しなさい",
+            "お勉強しなさい"
+          ],
+          "slots": []
+        },
+        {
+          "name": "Toilet",
+          "samples": [
+            "トイレしよう",
+            "トイレしなさい",
+            "トイレしようか",
+            "おトイレしよう",
+            "おトイレしようか",
+            "おトイレしなさい"
+          ],
+          "slots": []
+        }
+      ],
+      "invocationName": "エコちっち"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Intent-Lights.IntentSlot-Status",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "電気を操作する場合はONかOFFで教えてください"
+          }
+        ]
+      }
+    ],
+    "dialog": {
+      "intents": [
+        {
+          "name": "Lights",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "Status",
+              "type": "AttrOfLight",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Intent-Lights.IntentSlot-Status"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
